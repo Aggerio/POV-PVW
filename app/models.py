@@ -35,3 +35,60 @@ class VerifyResponse(BaseModel):
     pvalue: float
     transcript_sig: str
     txid: str
+
+
+# --------------------
+# V2 models (non-breaking additions)
+# --------------------
+
+class Ticket(BaseModel):
+    client_id: str
+    endpoint: str
+    body_hash: str
+    nonce: Union[str, int]
+    difficulty: int
+
+
+class Receipt(BaseModel):
+    commitment: str
+    txid: str
+    ticket_hash: str
+    timestamp: int
+
+
+class IssueV2Request(BaseModel):
+    content: str
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+    ticket: Ticket
+
+
+class IssueV2Response(BaseModel):
+    watermarked: str
+    receipt: Receipt
+    sig: str
+
+
+class EvidenceV2(BaseModel):
+    commitment: Optional[str] = None
+    txid: Optional[str] = None
+
+
+class VerifyV2Request(BaseModel):
+    content: str
+    client_id: str
+    ticket: Optional[Ticket] = None
+    evidence: Optional[EvidenceV2] = None
+    pow: Optional[PoWTicket] = None
+
+
+class DetectionResult(BaseModel):
+    statistic: float
+    pvalue: float
+    present: bool
+
+
+class VerifyV2Response(BaseModel):
+    detection: DetectionResult
+    transcript: Dict[str, Any]
+    sig: str
+    txid: str

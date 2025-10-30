@@ -1,1 +1,59 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
 venv/
+env/
+.python-version
+
+# IDE/editor
+.vscode/
+.idea/
+*.code-workspace
+
+# Test/coverage artifacts
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+coverage.xml
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+nohup.out
+
+# Environment & secrets
+.env
+.env.*
+*.secret
+*.key
+*.pem
+
+# Project data (local ledger and secrets)
+data/secret.key
+data/hmac.key
+data/server_salt.bin
+data/log.jsonl
+data/*.log
+data/*.sqlite
+data/*.db
+
+# Docker/temp
+*.pid
+tmp/
+.cache/
